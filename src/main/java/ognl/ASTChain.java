@@ -82,6 +82,11 @@ public class ASTChain extends SimpleNode implements NodeType, OrderedReturn
 
         for(int i = 0, ilast = _children.length - 1; i <= ilast; ++i)
         {
+
+            if (result == null) {
+                break;
+            }
+
             boolean handled = false;
 
             if (i < ilast) {
@@ -124,7 +129,7 @@ public class ASTChain extends SimpleNode implements NodeType, OrderedReturn
                                             + "'"); }
                                 }
                             }
-                            if (!handled) 
+                            if (!handled)
                             {
                                 result = OgnlRuntime.getIndexedProperty(context, result,
                                                                         propertyNode.getProperty(context, result).toString(),
